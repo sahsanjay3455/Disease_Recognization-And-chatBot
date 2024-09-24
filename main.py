@@ -1,10 +1,6 @@
 import streamlit as st
 from PIL import Image
-from openai import OpenAI
 import os
-
-
-
 
 from streamlit_option_menu import option_menu
 from gemini_utility import (load_gemini_pro_model,
@@ -20,10 +16,9 @@ st.set_page_config(
 )
 
 with st.sidebar:
-    selected = option_menu('Gemini AI With Sanjay Sah',
+    selected = option_menu('Gemini AI',
                            ['ChatBot',
-                            'Be your self Doctor',
-                            'Embed text',
+                            'Disease Recognition',
                             'Ask me anything'],
                            menu_icon='robot', icons=['chat-dots-fill', 'prescription2', 'textarea-t', 'patch-question-fill'],
                            default_index=0
@@ -65,7 +60,7 @@ if selected == 'ChatBot':
 
 
 # Image captioning page
-if selected == "Be your self Doctor":
+if selected == "Disease Recognition":
 
     st.title("📷 An application that can help users to identify medical images")
 
@@ -106,8 +101,9 @@ Important Notes:
 
 5.provide me an output response with these 4 heading  Detailed Analysis,Findings Report,Recommendations and Next Steps,Treatment Suggestions
 
-  Conclusion should me provided at end of the file.
 6.Suggest some medicine name for temporary time  according to problem .
+7.Conclusion:
+Conclusion should me provided at end of the file.
         
         """
                       # change this prompt as per your requirement
@@ -120,19 +116,20 @@ Important Notes:
 
 
 # text embedding model
-if selected == "Embed text":
+# if selected == "Embeded text":
 
-    st.title("🔡 Embed Text")
+#     st.title("🔡 Embeded Text")
 
-    # text box to enter prompt
-    user_prompt = st.text_area(label='', placeholder="Enter the text to get embeddings")
+#     # text box to enter prompt
+#     user_prompt = st.text_area(label='', placeholder="Enter the text to get embeddings")
 
-    if st.button("Get Response"):
-        response = embeddings_model_response(user_prompt)
-        st.markdown(response)
+#     if st.button("Get Response"):
+#         response = embeddings_model_response(user_prompt)
+#         st.markdown(response)
 
 
 # text embedding model
+
 if selected == "Ask me anything":
 
     st.title("❓ Ask me a question")
